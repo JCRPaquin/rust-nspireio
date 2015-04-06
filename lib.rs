@@ -14,7 +14,7 @@ use core::result::Result;
 mod ffi {
     use libc::{c_uchar, c_int};
     
-    pub struct nio_console;
+    pub enum nio_console {}
 
     // Shim functions
     extern "C" {
