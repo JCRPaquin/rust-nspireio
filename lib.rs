@@ -39,7 +39,7 @@ pub mod consts {
     pub const NIO_MAX_COLS: c_int = 53;
     pub const NIO_MAX_ROWS: c_int = 30;
 
-    #[repr(usize)]
+    #[repr(u8)]
     pub enum Color {
         Black = 0,
         Red,
@@ -74,8 +74,8 @@ impl NIOConsole {
 
         unsafe {
             ffi::nio_init(csl.ptr, size_x, size_y, offset_x, offset_y,
-                          (bkg_color as usize).to_u8().expect("Error in background color cast."),
-                          (frg_color as usize).to_u8().expect("Error in foreground color cast."),
+                          (bkg_color as u8),
+                          (frg_color as u8),
                           if drawing_enabled { 1 } else { 0 });
         }
         
