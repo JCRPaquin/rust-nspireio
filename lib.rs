@@ -73,8 +73,7 @@ impl NIOConsole {
 
         unsafe {
             ffi::nio_init(csl.ptr, size_x, size_y, offset_x, offset_y,
-                          (bkg_color as u8),
-                          (frg_color as u8),
+                          bkg_color as u8, frg_color as u8,
                           if drawing_enabled { 1 } else { 0 });
         }
         
