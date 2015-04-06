@@ -1,6 +1,0 @@
-#include <nspireio/nspireio.h>
-#include <stdlib.h>
-
-nio_console* alloc_console() {
-  return malloc(sizeof(nio_console));
-}
