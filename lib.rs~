@@ -1,0 +1,40 @@
+#![crate_name = "nspireio"]
+#![crate_type = "rlib"]
+
+#![feature(core, libc, no_std)]
+#![no_std]
+
+extern crate libc;
+
+mod ffi {
+    use libc::{c_char, c_uchar, c_int};
+    
+    pub enum nio_console {}
+
+    extern "C" {
+        pub fn nio_init(csl: *mut nio_console, size_x: c_int, size_y: c_int,
+                        offset_x: c_int, offset_y: c_int,
+                        bkg_color: c_uchar, frg_color: c_uchar,
+                        drawing_enabled: i8);
+
+        pub fn nio_free(csl: *mut nio_console);
+    }
+}
+
+pub struct NIOConsole {
+    priv ptr: ffi::nio_console,
+}
+
+impl NIOConsole {
+    fn new() -> NIOConsole {
+        
+    }
+}
+
+impl core::ops::Drop for NIOConsole {
+    fn drop(&mut self) {
+        unsafe {
+            ffi::nio_free(self.ptr)
+        }
+    }
+}
