@@ -8,12 +8,11 @@ extern crate core;
 extern crate libc;
 extern crate collections;
 
-use libc::{c_char, c_int};
-use core::num::ToPrimitive;
+use libc::c_int;
 use core::result::Result;
 
 mod ffi {
-    use libc::{c_char, c_uchar, c_int};
+    use libc::{c_uchar, c_int};
     
     pub struct nio_console;
 
